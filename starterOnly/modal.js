@@ -12,7 +12,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
-const submitBtn = document.querySelector(".btn-submit");
 
 // forms input
 const firstname = document.getElementById("first");
@@ -77,16 +76,40 @@ function checkboxisChecked() {
 // validate form inputs
 function validate() {
   if (!isTwoCaracters(firstname.value)) {
+    formData[0].setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+    );
+    formData[0].setAttribute("data-error-visible", "true");
     return false;
   } else if (!isTwoCaracters(lastname.value)) {
+    formData[1].setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
+    formData[1].setAttribute("data-error-visible", "true");
     return false;
   } else if (!isEmailValid(email.value)) {
+    formData[2].setAttribute("data-error", "L'adresse email n'est pas valide.");
+    formData[2].setAttribute("data-error-visible", "true");
     return false;
   } else if (!isNumber(turnamentQuantity.value)) {
+    formData[4].setAttribute(
+      "data-error",
+      "Veuillez entrer un nombre pour ce champ"
+    );
+    formData[4].setAttribute("data-error-visible", "true");
     return false;
   } else if (!radioIsChecked()) {
+    formData[5].setAttribute("data-error", "Vous devez choisir une option.");
+    formData[5].setAttribute("data-error-visible", "true");
     return false;
   } else if (!checkboxisChecked()) {
+    formData[6].setAttribute(
+      "data-error",
+      "Vous devez accepter les termes et conditions."
+    );
+    formData[6].setAttribute("data-error-visible", "true");
     return false;
   } else {
     return true;
