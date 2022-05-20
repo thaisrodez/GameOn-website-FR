@@ -12,8 +12,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
+const modalBody = document.querySelector(".modal-body");
 
-// forms input
+// forms inputs
 const firstname = document.getElementById("first");
 const lastname = document.getElementById("last");
 const email = document.getElementById("email");
@@ -31,6 +32,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeBtn.addEventListener("click", closeModal);
+
+document
+  .getElementById("close-confirmation")
+  .addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
@@ -73,6 +78,17 @@ function checkboxisChecked() {
   return generalTermsCheck.value === "on";
 }
 
+// prevent submit from reload
+document.querySelector("form").addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+// confirmation elements
+function confirmation() {
+  document.querySelector("form").classList.add("display-none");
+  document.getElementById("confirmation").classList.remove("display-none");
+}
+
 // validate form inputs
 function validate() {
   if (!isTwoCaracters(firstname.value)) {
@@ -112,6 +128,7 @@ function validate() {
     formData[6].setAttribute("data-error-visible", "true");
     return false;
   } else {
+    confirmation();
     return true;
   }
 }
