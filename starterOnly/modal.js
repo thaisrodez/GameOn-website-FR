@@ -27,25 +27,46 @@ generalTermsCheck.addEventListener("click", (e) => {
   e.target.value === "on" ? (e.target.value = "off") : (e.target.value = "on");
 });
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// close modal event
-closeBtn.addEventListener("click", closeModal);
-
-document
-  .getElementById("close-confirmation")
-  .addEventListener("click", closeModal);
+// hide error message in form
+function hideError() {
+  for (let data of formData) {
+    data.setAttribute("data-error-visible", "false");
+  }
+}
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 // close modal form
 function closeModal() {
+  if (validate()) {
+    return resetForm();
+  }
+  hideError();
+  return (modalbg.style.display = "none");
+}
+
+// close modal event
+closeBtn.addEventListener("click", closeModal);
+
+// close modal and reset form
+function resetForm() {
+  document.querySelector("form").reset();
+  document.getElementById("confirmation").classList.add("display-none");
+  document.querySelector("form").classList.remove("display-none");
+  hideError();
   modalbg.style.display = "none";
 }
+
+// reset and close form after validation
+document
+  .getElementById("close-confirmation")
+  .addEventListener("click", resetForm);
 
 // check if value has minimum x caracters
 function isTwoCaracters(value) {
