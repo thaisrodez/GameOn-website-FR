@@ -81,21 +81,7 @@ function isEmailValid(value) {
 
 // check if date is valid
 function isDateValid(value) {
-  const dateArray = value.split("-");
-  const year = parseInt(dateArray[0], 10);
-  const month = parseInt(dateArray[1], 10);
-  const day = parseInt(dateArray[2], 10);
-  const dateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
-  if (!dateRegex.test(value)) {
-    return false;
-  } else if (year > 2022) {
-    return false;
-  } else if (month < 0 || month > 12) {
-    return false;
-  } else if (day < 0 || day > 31) {
-    return false;
-  }
-  return true;
+  return new Date(value) < new Date();
 }
 
 // check if positive number
