@@ -18,6 +18,7 @@ const modalBody = document.querySelector(".modal-body");
 const firstname = document.getElementById("first");
 const lastname = document.getElementById("last");
 const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
 const turnamentQuantity = document.getElementById("quantity");
 const radioBtns = document.querySelectorAll("input[name='location']");
 const generalTermsCheck = document.getElementById("checkbox1");
@@ -78,6 +79,25 @@ function isEmailValid(value) {
   return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
 }
 
+// check if date is valid
+function isDateValid(value) {
+  const dateArray = value.split("-");
+  const year = parseInt(dateArray[0], 10);
+  const month = parseInt(dateArray[1], 10);
+  const day = parseInt(dateArray[2], 10);
+  const dateRegex = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+  if (!dateRegex.test(value)) {
+    return false;
+  } else if (year > 2022) {
+    return false;
+  } else if (month < 0 || month > 12) {
+    return false;
+  } else if (day < 0 || day > 31) {
+    return false;
+  }
+  return true;
+}
+
 // check if positive number
 function isNumber(value) {
   return /^\d+$/.test(value);
@@ -129,6 +149,10 @@ function validate() {
   } else if (!isEmailValid(email.value)) {
     formData[2].setAttribute("data-error", "L'adresse email n'est pas valide.");
     formData[2].setAttribute("data-error-visible", "true");
+    return false;
+  } else if (!isDateValid(birthdate.value)) {
+    formData[3].setAttribute("data-error", "Veuillez entrer une date valide.");
+    formData[3].setAttribute("data-error-visible", "true");
     return false;
   } else if (!isNumber(turnamentQuantity.value)) {
     formData[4].setAttribute(
