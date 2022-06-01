@@ -74,20 +74,54 @@ function isTwoCaracters(value) {
   return value.length >= 2;
 }
 
+// hide error message for firstname input
+firstname.addEventListener("input", function (e) {
+  if (isTwoCaracters(e.target.value)) {
+    formData[0].setAttribute("data-error-visible", "false");
+  }
+});
+
+// hide error message for lastname input
+lastname.addEventListener("input", function (e) {
+  if (isTwoCaracters(e.target.value)) {
+    formData[1].setAttribute("data-error-visible", "false");
+  }
+});
+
 // check if email is valid
 function isEmailValid(value) {
   return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
 }
+// hide error message for email input
+email.addEventListener("input", function (e) {
+  if (isEmailValid(e.target.value)) {
+    formData[2].setAttribute("data-error-visible", "false");
+  }
+});
 
 // check if date is valid
 function isDateValid(value) {
   return new Date(value) < new Date();
 }
 
+// hide error message for date input
+birthdate.addEventListener("input", function (e) {
+  if (isDateValid(e.target.value)) {
+    formData[3].setAttribute("data-error-visible", "false");
+  }
+});
+
 // check if positive number
 function isNumber(value) {
   return /^\d+$/.test(value);
 }
+
+// hide error message for turnament quantity input
+turnamentQuantity.addEventListener("input", function (e) {
+  if (isNumber(e.target.value)) {
+    formData[4].setAttribute("data-error-visible", "false");
+  }
+});
 
 // check if one radio button is checked
 function radioIsChecked() {
@@ -100,11 +134,26 @@ function radioIsChecked() {
   return radioResults.length > 0;
 }
 
+// hide error message for turnament location radio
+for (let radiobtn of radioBtns) {
+  radiobtn.addEventListener("click", function (e) {
+    if (radioIsChecked()) {
+      formData[5].setAttribute("data-error-visible", "false");
+    }
+  });
+}
+
 // check if checkbox is checked
 function checkboxisChecked() {
   return generalTermsCheck.value === "on";
 }
 
+// hide error message for checkox
+generalTermsCheck.addEventListener("click", function (e) {
+  if (checkboxisChecked()) {
+    formData[6].setAttribute("data-error-visible", "false");
+  }
+});
 // prevent submit from reload
 document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
