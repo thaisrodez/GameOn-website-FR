@@ -194,7 +194,7 @@ main {
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   color: #fff;
   padding-top: 10px;
@@ -218,6 +218,7 @@ main {
   .content {
     margin: 0 auto;
     height: 100%;
+    max-width: unset;
   }
 }
 
