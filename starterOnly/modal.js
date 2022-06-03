@@ -38,6 +38,11 @@ function hideError() {
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
 }
 
 // launch modal event

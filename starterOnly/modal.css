@@ -80,6 +80,19 @@ img {
     padding: 12px;
   }
 
+  .main-navbar {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    z-index: 55;
+    background-color: white;
+    width: 100%;
+  }
+
+  .topnav {
+    overflow: visible;
+  }
+
   .topnav a {
     display: none;
   }
@@ -210,7 +223,7 @@ main {
 /* modal responsive design */
 @media screen and (max-width: 768px) {
   .bground {
-    top: 8vh;
+    top: 9vh;
     height: 92vh;
     background-color: unset;
   }
