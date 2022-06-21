@@ -124,15 +124,6 @@ img {
   }
 }
 
-/* @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} */
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -283,12 +274,6 @@ input {
   border: 2px solid #e54858;
 }
 
-/*
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
