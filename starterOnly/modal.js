@@ -136,7 +136,7 @@ function radioIsChecked() {
       radioResults.push(radiobtn.value);
     }
   }
-  return radioResults.length > 0;
+  return radioResults.length === 1;
 }
 
 // hide error message for turnament location radio
@@ -159,6 +159,7 @@ generalTermsCheck.addEventListener("click", function (e) {
     formData[6].setAttribute("data-error-visible", "false");
   }
 });
+
 // prevent submit from reload
 document.querySelector("form").addEventListener("submit", (e) => {
   e.preventDefault();
