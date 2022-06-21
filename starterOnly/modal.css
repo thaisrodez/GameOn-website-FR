@@ -80,6 +80,19 @@ img {
     padding: 12px;
   }
 
+  .main-navbar {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    z-index: 55;
+    background-color: white;
+    width: 100%;
+  }
+
+  .topnav {
+    overflow: visible;
+  }
+
   .topnav a {
     display: none;
   }
@@ -110,15 +123,6 @@ img {
     text-align: left;
   }
 }
-
-/* @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} */
 
 main {
   font-size: 130%;
@@ -194,7 +198,7 @@ main {
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   color: #fff;
   padding-top: 10px;
@@ -210,7 +214,7 @@ main {
 /* modal responsive design */
 @media screen and (max-width: 768px) {
   .bground {
-    top: 8vh;
+    top: 9vh;
     height: 92vh;
     background-color: unset;
   }
@@ -218,6 +222,7 @@ main {
   .content {
     margin: 0 auto;
     height: 100%;
+    max-width: unset;
   }
 }
 
@@ -269,12 +274,6 @@ input {
   border: 2px solid #e54858;
 }
 
-/*
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
